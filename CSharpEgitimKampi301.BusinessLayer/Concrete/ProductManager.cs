@@ -1,4 +1,5 @@
 ﻿using CSharpEgitimKampi301.BusinessLayer.Abstract;
+using CSharpEgitimKampi301.DataAccessLayer.Abstract;
 using CSharpEgitimKampi301.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,36 @@ namespace CSharpEgitimKampi301.BusinessLayer.Concrete
 {
     public class ProductManager : IProductService
     {
+        private readonly IProductDAL _productDAL;
+
+        public ProductManager(IProductDAL productDAL)
+        {
+            _productDAL = productDAL;
+        }
+
         public void TDelete(Product entity)
         {
-            throw new NotImplementedException();
+            _productDAL.Delete(entity);
         }
 
         public List<Product> TGetAll()
         {
-            throw new NotImplementedException();
+            return _productDAL.GetAll();
         }
 
         public Product TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _productDAL.GetById(id);
         }
 
         public void TInsert(Product entity)
         {
-            throw new NotImplementedException();
+            _productDAL.Insert(entity);
         }
 
         public void TUpdate(Product entity)
         {
-            throw new NotImplementedException();
+            _productDAL.Update(entity);
         }
     }
 }
